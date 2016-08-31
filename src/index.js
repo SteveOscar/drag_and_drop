@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './Board';
+import { observe } from './Game'
 
-ReactDOM.render(
-  <div style={{ width: '500px', height: '500px' }}>
-    <Board knightPosition={[4, 7]} />
-  </div>,
-  document.getElementById('root')
+const rootEl = document.getElementById('root')
+
+observe(knightPosition =>
+  ReactDOM.render(
+    <div style={{ width: '500px', height: '500px' }}>
+      <Board knightPosition={knightPosition} />
+    </div>,
+    rootEl
+  )
 );
